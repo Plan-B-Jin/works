@@ -321,8 +321,8 @@ header.on .searchTop input[type="submit"] { background:rgba(0,0,0,0.3) url(../..
 
 #rightBox .language { position:fixed; right:0; top:110px; }
 #rightBox.on .language { display:none; }
-#rightBox .language .box {position:absolute; right:53px; top:10px; z-index:99; }
-#rightBox .language .box a { transform:rotate(-90deg); transform-origin:top right; color:#fff; font-weight:300; white-space:nowrap; display:block; font-size:12px; letter-spacing:-0.03em; }
+#rightBox .language .box {position:absolute; right:30px; top:10px; z-index:99; }
+#rightBox .language .box a {margin:20px 0;color:#fff;font-weight:300;white-space:nowrap;display:block;font-size:12px;letter-spacing:-0.03em;}
 #rightBox .language .box a span { position:relative; color:#fff; font-weight:300;  padding:10px 26px 10px 26px; transition:all .3s ease-in-out; }
 #rightBox .language .box a span:before{ content:""; display:block; width:20px; height:20px;  position:absolute; left:0; top:7px; background:url(../../../resources/images/common/icon_eng.png) left center no-repeat;  transform:rotate(90deg); } 
 
@@ -394,8 +394,8 @@ body.sub.fix #rightBox .family.on .box a span { color:#fff; }
 .scroll { position:fixed; right:0; bottom:-50px; }
 body.sub .scroll { display:none; }
 #rightBox.on .scroll { display:none; }
-.scroll .box { transform:rotate(90deg); transform-origin:top left;}
-.scroll .box  .txtbox { transform:rotate(180deg); transform-origin:top left; margin:0 0 0 -88px; position:relative; display:block; }
+.scroll .box {/* transform:rotate(90deg); *//* transform-origin:top left; */}
+.scroll .box  .txtbox {/* transform:rotate(180deg); *//* transform-origin:top left; *//* margin:0 0 0 -88px; */position:relative;display:block;}
 .scroll .box  .txtbox span.icon { position:relative; display:inline-block; vertical-align:middle; width:25px; height:18px; border:1px solid rgba(255,255,255,0.75); border-radius:9px; animation: scroll 1.0s linear 9999 normal forwards }
 .scroll .box  .txtbox span.icon:before{ content:""; display:block; width:2px; height:2px;  position:absolute; left:50%; top:50%; margin:-1px; background-color:rgba(255,255,255,0.75); border-radius:50%; }
 .scroll .box  .txtbox span.txt {  vertical-align:middle; color:#fff; font-weight:300; font-size:12px; letter-spacing:-0.02em; margin-left:40px; }
