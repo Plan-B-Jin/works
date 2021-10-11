@@ -124,7 +124,7 @@ $(window).on('load', function() {
 });
 
 $(window).on('load', function (){
-	var owl = $('.owl-carousel');
+	var owl = $('#owlBannerSet4');
 	owl.owlCarousel({
     margin:35,
     loop:true,

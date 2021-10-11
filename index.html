@@ -1,67 +1,153 @@
 <!DOCTYPE HTML>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <!-- //알수 없음
-    <meta name="_csrf" content="739cca18-08fe-4705-a16c-8fa2fd9bc560"/>
-    <meta name="_csrf_header" content="X-CSRF-TOKEN"/>
-    -->
+
     <title>디지털베이</title>
-
-    <!-- //SEO 관련
-    <meta name="title" content="더테이스터블" />
-    <meta name="author" content="" />
-    <meta name="keywords" content="" />
-    <meta name="subject" content=""/>
-    <meta name="description" content="음식, 문화, 그리고 사람을 연결 합니다" />
-    <meta name="copyright" content="" />
-    <meta name="content-language" content="" />
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="더테이스터블">
-    <meta property="og:site_name" content="">
-    <meta property="og:image" content="resources/images/common/img_web.jpg">
-    <meta property="og:description" content="음식, 문화, 그리고 사람을 연결 합니다"> 
-    -->
-
     <link rel="shortcut icon" type="image/x-icon" href="resources/images/common/favicon.ico">
     <link rel="stylesheet" type="text/css" href="resources/css/kr/style.css" />
     <link rel="stylesheet" type="text/css" href="resources/css/gdi.css">
     <script src="resources/js/jquery.1.12.4.min.js"></script>
     <script src="resources/js/common.js"></script>
-    <script src="resources/js/promise.js"></script>
-    <script src="resources/js/vue.js"></script>
-    <!-- <script src="resources/js/axios.js"></script> //브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리 -->
     <script src="resources/js/constants.js"></script>
     <script src="resources/js/swiper.min.js"></script>
-    <script src="resources/js/main.js"></script> <!--//메뉴 레이아웃 구동-->
-    <!-- moment -->
-    <script src = "resources/plugin/adminlte/component/moment/min/moment.min.js"></script>
-    <script src = "resources/plugin/adminlte/component/moment/min/locales.min.js"></script>
-    <script src = "resources/plugin/adminlte/component/moment/locale/ko.js"></script>
+    <script src="resources/js/main.js"></script>
+    <!--//메뉴 레이아웃 구동-->
 
+    <script src="resources/js/jquery.waypoints.min.js"></script>
+    <script src="resources/js/owl.carousel.js"></script>
+    <!--//상단 메뉴 레이아웃 구동-->
+    <script src="resources/js/jquery.mousewheel.min.js"></script>
+    <script src="resources/js/jquery.fullpage.min.js"></script>
+    <!--//전체 메인 section -->
     <!--[if lt IE 9]>
     <script src="resources/js/html5shiv.js"></script>
     <![endif]-->
 
-<script>
-    var windowWidth = window.screen.width
-    setViewPort(windowWidth);
-    function setViewPort(w_width) {
-        if (w_width <= 420 ){
-            $("meta[name=viewport]").attr("content", "width=420, maximum-scale=2.0, user-scalable=yes, target-densitydpi=medium-dpi");
-        } else {
-            $("meta[name=viewport]").attr("content", "width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi");
-        }
-    }
-    $(window).resize(function(){
+    <!-- add : Gheem Bona -->
+    <link rel="stylesheet" type="text/css" href="resources/css/mainCustom.css" />
+    <script src="resources/js/mainCustom.js"></script>
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=67f0b37dbb6dace657c0757e578ee937"></script>
+
+    <script>
         var windowWidth = window.screen.width
         setViewPort(windowWidth);
+        function setViewPort(w_width) {
+            if (w_width <= 420) {
+                $("meta[name=viewport]").attr("content", "width=420, maximum-scale=2.0, user-scalable=yes, target-densitydpi=medium-dpi");
+            } else {
+                $("meta[name=viewport]").attr("content", "width=device-width, initial-scale=1.0, maximum-scale=2.0, minimum-scale=1.0, user-scalable=yes, target-densitydpi=medium-dpi");
+            }
+        }
+        $(window).resize(function () {
+            var windowWidth = window.screen.width
+            setViewPort(windowWidth);
+        });
+    </script>
+
+<script>
+    $(function () {
+        $("html,body").css({
+            overflow: "hidden"
+        })
+        $('body').on('scroll touchmove mousewheel', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        });
+        setTimeout(function () {
+            $('body').off('scroll touchmove mousewheel');
+            $("#loading").stop().fadeOut(800);
+        }, 800);
+
+        $('#fullpage').fullpage({
+            //sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
+            //anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', 'lastPage'],
+            verticalCentered: true,
+            menu: '#menu',
+            navigation: true,
+            scrollingSpeed: 800,
+            responsiveWidth: 1023,
+            afterLoad: function (anchorLink, index) {
+                var navgtTxtset = $('#fp-nav').find('span');
+                navgtTxtset.eq(0).html('Main');
+                navgtTxtset.eq(1).html('Digital Bay');
+                navgtTxtset.eq(2).html('SHOWREEL');
+                navgtTxtset.eq(3).html('Filmography');
+                navgtTxtset.eq(4).html('PATENER・MAP');
+
+                $('.section').each(function () {
+                    if ($('.main1').is('.active')) {
+                        $('.main1').addClass('on');
+                        $('.main2').addClass('on');
+                        $('.main3').addClass('on');
+                        $('.main4').addClass('on');
+                    } else {
+                        $('.main1').removeClass('on');
+                    }
+                    if ($('.main2').is('.active')) {
+                        $('.main2').addClass('on');
+                        $('.main1').addClass('on');
+                        $('.main3').addClass('on');
+                        $('.main4').addClass('on');
+                        $('.main5').addClass('on');
+                    } else {
+                        $('.main2').removeClass('on');
+                    }
+                    if ($('.main3').is('.active')) {
+                        $('.main3').addClass('on');
+                        $('.main1').addClass('on');
+                        $('.main2').addClass('on');
+                        $('.main4').addClass('on');
+                        $('.main5').addClass('on');
+                        $('.counter').countUp();
+                    } else {
+                        $('.main3').removeClass('on');
+                    }
+                    if ($('.main4').is('.active')) {
+                        $('.main4').addClass('on');
+                        $('.main1').addClass('on');
+                        $('.main2').addClass('on');
+                        $('.main3').addClass('on');
+                        $('.main5').addClass('on');
+                        /*
+                        $('.owl-carousel').on('scroll mousewheel', function(event) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                            return false;
+                        });
+                        */
+                    } else {
+                        $('.main4').removeClass('on');
+                    }
+                    if ($('.main5').is('.active')) {
+                        $('.main5').addClass('on');
+                        $('.main1').addClass('on');
+                        $('.main2').addClass('on');
+                        $('.main3').addClass('on');
+                        $('.main4').addClass('on');
+                    } else {
+                        $('.main5').removeClass('on');
+                    }
+                    if ($('.main6').is('.active')) {
+                        $('.main5').addClass('on');
+                    }
+                });
+            },
+
+        });
+    });
+    $('#moveTo').click(function () {
+        //$.fn.fullpage.setScrollingSpeed(0); 효과를 없애고싶을때
+        $.fn.fullpage.moveTo(1, 1); // 이동하고싶은 페이지
+        //$.fn.fullpage.setScrollingSpeed(700); 효과를 없애고싶을때
     });
 </script>
-
 </head>
 
 <body>
@@ -114,7 +200,7 @@
                                     <li><a href="#none">동영상</a></li>
                                     <li><a href="#none">이미지</a></li>
                                     <li><a href="#none">서식</a></li>
-                                    <li><a href="#none">웹하드</a></li>                            
+                                    <li><a href="#none">웹하드</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -150,887 +236,551 @@
             <div class="gnb_bg"></div>
         </header>
         <!-- /header -->
+
+        <div id="rightBox">
+            <div class="mbox">
+                <div class="language account">
+                    <div class="box">
+                        <a href="#none"><i class="dgtb-login"></i></a>
+                        <a href="#none"><i class="dgtb-join"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 가져옴 -->
+
+
+            <div class="scroll">
+                <div class="box">
+                    <div class="txtbox">
+                        <div class="guide_scroll" style="opacity: 0.5;"><span>SCROLL</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="allmenuBox">
+            <div class="bgbox">
+                <div class="bgbox"></div>
+            </div>
+            <div class="btn_close"></div>
+            <div class="menuBox"></div>
+            <div class="allmenu_bottom"></div>
+        </div>
+        <div id="container">
+
+            <div id="preloader">
+                <div id="status"></div>
+            </div>
+            <div id="fullpage">
+
+
+
+                <div class="section main1" id="section0">
+                    <div id="mainVisual">
+                        <div class="mov">
+                            <div class="mov_bg"></div>
+                            <video loop="" muted="" playsinline="" data-autoplay="">
+                                <source src="resources/images/main/mov_new.mp4" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+
+                        </div>
+                        <div class="txtbox">
+                            <div class="txt_3">Digital Bay</div>
+                            <div class="txt txt_1">
+                                <div><span>버추얼스튜디오의 구축으로</span></div>
+                            </div>
+                            <div class="txt txt_2">
+                                <div><span>시공을 초월한 모든 가상의 공간을 창조합니다.</span></div>
+                            </div>
+                        </div>
+                        <div class="main-news">
+                            <h2 class="tit-news">Recent<br>News</h2>
+                            <ul class="news-list">
+                                <li><a href="#none"><span>글로벌 방송,영상 산업 트렌드의 시작 BUSAN CONTENTS MARKET 부산콘텐츠마켓</span></a>
+                                </li>
+                                <li><a href="#none"><span>DIGITAL-NOTICE10 공지사항 10번째 내용</span></a></li>
+                                <li><a href="#none"><span>DIGITAL-NOTICE09 공지사항 09번째 내용</span></a></li>
+                            </ul>
+                            <a href="/kr/news/press_list" class="more">View All</a>
+                        </div>
+                    </div>
+                    <!-- //visual -->
+                </div>
+
+                <!-- Business -->
+                <div class="section main2" id="section1">
+                    <div class="listbox">
+                        <ul>
+                            <li>
+                                <div class="imgbox"><img src="resources/images/main/img_section2_1.jpg" alt=""></div>
+                                <div class="contbox">
+                                    <span class="icon"><img src="resources/images/main/icon_section2_1.png"
+                                            alt=""></span>
+                                    <div class="txt_1">Fine-Dining</div>
+                                    <div class="txt_2">외식 사업</div>
+                                </div>
+                                <div class="bg"></div>
+                                <div class="over">
+                                    <span class="icon"><img src="resources/images/main/icon_section2_1.png"
+                                            alt=""></span>
+                                    <div class="txt_1">Fine-Dining</div>
+                                    <div class="txt_2">외식 사업</div>
+                                    <div class="txt_3">고객 한분 한분의 높은 가치에<br /> 맞는 음식과 공간을 제공</div>
+                                    <a href="/kr/business.do#section1">자세히 보기</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="imgbox"><img src="resources/images/main/img_section2_2.jpg" alt=""></div>
+                                <div class="contbox">
+                                    <span class="icon"><img src="resources/images/main/icon_section2_2.png"
+                                            alt=""></span>
+                                    <div class="txt_1">O2O</div>
+                                    <div class="txt_2">온라인 투 오프라인 사업</div>
+                                </div>
+                                <div class="bg"></div>
+                                <div class="over">
+                                    <span class="icon"><img src="resources/images/main/icon_section2_2.png"
+                                            alt=""></span>
+                                    <div class="txt_1">O2O</div>
+                                    <div class="txt_2">온라인 투 오프라인 사업</div>
+                                    <div class="txt_3">온라인을 통해 접한 고객님들이 다시<br /> 당사 오프라인 매장에 재방문하는 라이프스타일</div>
+                                    <a href="/kr/business.do#section2">자세히 보기</a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="imgbox"><img src="resources/images/main/img_section2_3.jpg" alt=""></div>
+                                <div class="contbox">
+                                    <span class="icon"><img src="resources/images/main/icon_section2_3.png"
+                                            alt=""></span>
+                                    <div class="txt_1">Concession</div>
+                                    <div class="txt_2">컨세션사업</div>
+                                </div>
+                                <div class="bg"></div>
+                                <div class="over">
+                                    <span class="icon"><img src="resources/images/main/icon_section2_3.png"
+                                            alt=""></span>
+                                    <div class="txt_1">Concession</div>
+                                    <div class="txt_2">컨세션사업</div>
+                                    <div class="txt_3">다중복합시설과 골프장 같은<br /> 레저시설 내 식음 사업권을 위탁</div>
+                                    <a href="/kr/business.do#section3">자세히 보기</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <span class="b_txt">Business</span>
+                </div>
+                <!-- //Business -->
+
+                <!-- About -->
+                <div class="section main3" id="section2">
+
+                    <div class="aboutBox">
+                        <div class="titleBox">
+                            <div class="txt_1">음식, 문화, 그리고 사람</div>
+                            <div class="txt_2"><span>About</span> 더테이스터블</div>
+                            <div class="txt_3">더테이스터블은 컨텐츠 경쟁력을 기반으로 우리의 컨텐츠를 온/오프라인 플랫폼을 통해 고객에게 제공합니다</div>
+                        </div>
+
+                        <div class="listbox">
+                            <ul>
+                                <li>
+                                    <div class="icon">
+                                        <span><img src="resources/images/main/icon_section3_1.png" alt=""></span>
+                                    </div>
+                                    <div class="num"><strong class="counter">15</strong>개점</div>
+                                    <div class="txt">브랜드 레스토랑</div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span><img src="resources/images/main/icon_section3_2.png" alt=""></span>
+                                    </div>
+                                    <div class="num"><strong class="counter">4</strong>개점</div>
+                                    <div class="txt">컨벤션</div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span><img src="resources/images/main/icon_section3_3.png" alt=""></span>
+                                    </div>
+                                    <div class="num"><strong class="counter">3</strong>개점</div>
+                                    <div class="txt">골프장 F&B</div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span><img src="resources/images/main/icon_section3_4.png" alt=""></span>
+                                    </div>
+                                    <div class="num"><strong class="counter">2</strong>개소</div>
+                                    <div class="txt">휴게소 F&B</div>
+                                </li>
+                                <li>
+                                    <div class="icon">
+                                        <span><img src="resources/images/main/icon_section3_5.png" alt=""></span>
+                                    </div>
+                                    <div class="num"><strong class="counter">3</strong>개점</div>
+                                    <div class="txt">캐주얼 레스토랑</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <span class="b_txt">About</span>
+                </div>
+                <!-- //About -->
+
+                <!-- Brand -->
+                <div class="section main4" id="section3">
+
+                    <div class="brandBox">
+                        <div class="titleBox">
+                            <div class="txt_1">당신에게 행복을 선사합니다</div>
+                            <div class="txt_2"><span>Brand</span></div>
+                            <div class="txt_3">더테이스터블는 플랫폼 상품을 기획하고 판매하여 최고의 브랜드로 고객님께 보답하고자 합니다</div>
+                        </div>
+
+                        <div class="listbox">
+
+                            <div id="owlBannerSet4" class="owl-carousel owl-theme">
+                                <!-- 3 -->
+                                <div class="item">
+                                    <div class="imgbox">
+                                        <a href="/kr/brand.do#section1">
+                                            <img src="resources/images/main/img_brand3.jpg" alt="">
+                                            <div class="txt">63 Restaurant</div>
+                                            <span class="overbox"><span class="bg"></span><span class="more">자세히
+                                                    보기</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="title"><img src="resources/images/main/tit_brand3.png" alt=""></div>
+                                </div>
+                                <!-- //3 -->
+                                <!-- 4 -->
+                                <div class="item">
+                                    <div class="imgbox">
+                                        <a href="/kr/brand.do#section2">
+                                            <img src="resources/images/main/img_brand4.jpg" alt="">
+                                            <div class="txt">63 Convention</div>
+                                            <span class="overbox"><span class="bg"></span><span class="more">자세히
+                                                    보기</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="title"><img src="resources/images/main/tit_brand4.png" alt=""></div>
+                                </div>
+                                <!-- //4 -->
+                                <!-- 6 -->
+                                <div class="item">
+                                    <div class="imgbox">
+                                        <a href="/kr/brand.do#section3">
+                                            <img src="resources/images/main/img_brand6.jpg" alt="">
+                                            <div class="txt">Plaza Wedding</div>
+                                            <span class="overbox"><span class="bg"></span><span class="more">자세히
+                                                    보기</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="title"><img src="resources/images/main/tit_brand6.png" alt=""></div>
+                                </div>
+                                <!-- //6 -->
+                                <!-- 1 -->
+                                <div class="item">
+                                    <div class="imgbox">
+                                        <a href="/kr/brand.do#section4">
+                                            <img src="resources/images/main/img_brand1.jpg" alt="">
+                                            <div class="txt">Taoyuen Style</div>
+                                            <span class="overbox"><span class="bg"></span><span class="more">자세히
+                                                    보기</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="title"><img src="resources/images/main/tit_brand1.png" alt=""></div>
+                                </div>
+                                <!-- //1 -->
+                                <!-- 2 -->
+                                <div class="item">
+                                    <div class="imgbox">
+                                        <a href="/kr/brand.do#section5">
+                                            <img src="resources/images/main/img_brand2.jpg" alt="">
+                                            <div class="txt">T-won</div>
+                                            <span class="overbox"><span class="bg"></span><span class="more">자세히
+                                                    보기</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="title"><img src="resources/images/main/tit_brand2.png" alt=""></div>
+                                </div>
+                                <!-- //2 -->
+                                <!-- 7 -->
+                                <div class="item">
+                                    <div class="imgbox">
+                                        <a href="/kr/brand.do#section7">
+                                            <img src="resources/images/main/img_brand7.jpg" alt="">
+                                            <div class="txt">Baeknihyang Style</div>
+                                            <span class="overbox"><span class="bg"></span><span class="more">자세히
+                                                    보기</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="title"><img src="resources/images/main/tit_brand7.png" alt=""></div>
+                                </div>
+                                <!-- //7 -->
+                                <!-- 5 -->
+                                <div class="item">
+                                    <div class="imgbox">
+                                        <a href="/kr/brand.do#section6">
+                                            <img src="resources/images/main/img_brand5.jpg" alt="">
+                                            <div class="txt">63 Dining Kit</div>
+                                            <span class="overbox"><span class="bg"></span><span class="more">자세히
+                                                    보기</span></span>
+                                        </a>
+                                    </div>
+                                    <div class="title"><img src="resources/images/main/tit_brand5.png" alt=""></div>
+                                </div>
+                                <!-- //5 -->
+
+                            </div>
+
+                            <div class="btnBox">
+                                <div class="btn_pn brand-button-prev"></div>
+                                <div class="icon"></div>
+                                <div class="btn_pn brand-button-next"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <span class="b_txt">Brand</span>
+                </div>
+                <!-- //Brand -->
+
+
+
+
+
+
+                <!-- ##################################################################### 5 section START.-->
+                <div class="section main5" id="section4">
+                    <div class="customerBox">
+                        <div class="banner-area">
+                            <div class="titBox">
+                                <div class="tit">PARTNER</div>
+                                <div class="txt">시, 군, 대학, 기관, 업체 등 부산영상위원회와<br />상호발전을 위한 업무협약을 맺은 파트너사입니다.</div>
+                            </div>
+
+                            <div class="banner">
+                                <div class="banner-ctrl btnBox">
+                                    <div class="btn_pn brand-button-prev"></div>
+                                    <div class="btn_pn brand-button-next"></div>
+                                </div>
+                                <div class="banner-list">
+                                    <div id="owlBannerFoot" class="owl-carousel owl-theme">
+                                        <!-- 1 -->
+                                        <div class="item">
+                                            <div class="imgbox">
+                                                <a href="/kr/brand.do#section1">
+                                                    <img src="resources/images/main/banner/1.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- //1 -->
+                                        <!-- 2 -->
+                                        <div class="item" style="background-color:#0f1627;">
+                                            <div class="imgbox">
+                                                <a href="/kr/brand.do#section2">
+                                                    <img src="resources/images/main/banner/2.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- //2 -->
+                                        <!-- 3 -->
+                                        <div class="item">
+                                            <div class="imgbox">
+                                                <a href="/kr/brand.do#section3">
+                                                    <img src="resources/images/main/banner/3.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- //3 -->
+                                        <!-- 4 -->
+                                        <div class="item" style="background-color:#141414;">
+                                            <div class="imgbox">
+                                                <a href="/kr/brand.do#section4">
+                                                    <img src="resources/images/main/banner/4.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- //4 -->
+                                        <!-- 5 -->
+                                        <div class="item">
+                                            <div class="imgbox">
+                                                <a href="/kr/brand.do#section5">
+                                                    <img src="resources/images/main/banner/5.png" alt="">
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <!-- //5 -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="map-area">
+                            <div class="map-box" id="kakaoMapArea" style="width: 100%;height:25vmax;"></div>
+                            <div class="address-box">
+                                <div class="address-txt">
+                                    <p>부산광역시 해운대구 해운대해변로 52</p>
+                                    <p style="margin-bottom: 10px;">부산영화촬영스튜디오/디지털베이</p>
+                                    <dl>
+                                        <dt><i class="icon-call"></i></dt>
+                                        <dd>052-72000-322</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt><i class="icon-fax"></i></dt>
+                                        <dd>052-72000-320</dd>
+                                    </dl>
+                                    <dl>
+                                        <dt><i class="icon-mail"></i></dt>
+                                        <dd>BFC@BFC.OR.KR</dd>
+                                    </dl>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_top" id="moveTo">
+                        <a href="javascript:void(0);">
+                            <i class="icon-top"></i>
+                        </a>
+                    </div>
+
+
+
+
+
+                </div>
+                <!-- //##################################################################### 5 section END. -->
+
+                <!-- footer -->
+                <div class="section main6 fp-auto-height" id="section5">
+                    <footer>
+                        <div class="fbox">
+                            <div class="sitemap-allmenu">
+                                <ul>
+                                    <li>
+                                        <a href="#1">Busan Cinema Studio</a>
+                                        <ul class="depth2 menu1">
+                                            <li><a href="#none">digital bay</a></li>
+                                            <li><a href="#none">busan cinema studio</a></li>
+                                            <li><a href="#none">show reel</a></li>
+                                            <li><a href="#none">filography</a></li>
+                                            <li><a href="#none">patner</a></li>
+                                            <li><a href="#none">location</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#2">Studio</a>
+                                        <ul class="depth2 menu2">
+                                            <li><a href="#none">스튜디오 A</a></li>
+                                            <li><a href="#none">스튜디오 B</a></li>
+                                            <li><a href="#none">부대시설 1층</a></li>
+                                            <li><a href="#none">부대시설 2층</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#2">Digital Bay</a>
+                                        <ul class="depth2 menu2">
+                                            <li><a href="#none">XR Tech Lab</a></li>
+                                            <li><a href="#none">스튜디오 B</a></li>
+                                            <li><a href="#none">디지털 촬영 장비</a></li>
+                                            <li><a href="#none">디지털 특수 장비</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#3">palm Bay</a>
+                                        <ul class="depth2 menu4">
+                                            <li><a href="#none">3D Asset</a></li>
+                                            <li><a href="#none">동영상</a></li>
+                                            <li><a href="#none">이미지</a></li>
+                                            <li><a href="#none">서식</a></li>
+                                            <li><a href="#none">웹하드</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#4">Colour Bay</a>
+                                        <ul class="depth2 menu4">
+                                            <li><a href="#none">색정보실</a></li>
+                                            <li><a href="#none">편집실</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#6">Community</a>
+                                        <ul class="depth2 menu5">
+                                            <li><a href="#none">공지사항</a></li>
+                                            <li><a href="#none">자유게시판</a></li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <a href="#7">Service</a>
+                                        <ul class="depth2 menu5">
+                                            <li><a href="#none">회원가입</a></li>
+                                            <li><a href="#none">ID/PW찾기</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="fmenu">
+                                <div class="smenu">
+                                    <a href="/kr/privacy.do">개인정보처리방침</a>
+                                    <a href="/kr/email.do">이메일무단수집거부</a>
+                                </div>
+                                <div class="scmenu">
+                                    <a class="link-youtube"><i class="fab fa-youtube"></i>youtube</a>
+                                    <a class="link-facebook"><i class="fab fa-facebook-square"></i>facebook</a>
+                                </div> 
+                            </div>
+                            <div class="infobox">
+                                <ul class="address">
+                                    <li>부산광역시 해운대구 해운대해변로 52(우 612-824)</li>
+                                    <li class="bar">TEL.<a href="tel:051-7200-322">051-7200-322</a></li>
+                                    <li class="bar">FAX. 051-7200-320</li>
+                                </ul>
+                                <p class="copyright">Copyright ⓒ Busan Production Center-digital Bay. All rights Reserved.</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+
+
+                <!--General -->
+                <script src="resources/js/navMapper.js"></script>
+                <!-- <script src = "resources/js/axiosRequests.js"></script> //브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리-->
+                <script src="resources/js/poly.js"></script>
+                <script src="resources/js/gdi-functions.js"></script>
+                <script src="resources/js/surveyConstant.js"></script>
+                <script src="resources/js/jquery.malihu.PageScroll2id.js"></script>
+                <!-- GDi Calendar -->
+                <script src="resources/js/gdiCalendar.js"></script>
+                <!-- highchart -->
+                <script src="resources/js/highchart.js"></script>
+                <script src="resources/js/series-label.js"></script>
+                <script src="resources/js/highchart-exporting.js"></script>
+                <script src="resources/js/highchart-data.js"></script>
+                <script src="resources/js/canvasImage.js"></script>
+
+                <script src="resources/js/jquery.waypoints.min.js"></script>
+                <script src="resources/js/jquery.countup.js"></script>
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+
             
-<div id="rightBox">
-    <div class="mbox">
-        <div class="language account">
-            <div class="box">
-                <a href="#none"><i class="dgtb-login"></i></a>
-                <!-- resources/images/main/icon/forma-1@2x.png -->
-                <!-- resources/images/main/icon/login@2x.png -->
-                <a href="#none"><i class="dgtb-join"></i></a>
-            </div>
-        </div>
-<!-- // side right family menu hide 사용안함
-        <div class="family">
-            <div class="box">
-                <a href="javascript:void(0);"><span>Family Site +</span></a>
-            </div>
-            <div class="linkbox">
-                <ul>
-                    <li><a href="https://www.hanwha.co.kr/" target="_blank">한화그룹</a></li>
-                    <li><a href="https://www.hwrc.co.kr/" target="_blank">한화호텔앤드리조트</a></li>
-                    <li><a href="https://www.hanwharesort.co.kr/" target="_blank">한화리조트</a></li>
-                    <li><a href="https://www.hoteltheplaza.com/" target="_blank">더플라자 호텔</a></li>
-                    <li><a href="https://www.aquaplanet.co.kr/" target="_blank">아쿠아플라넷</a></li>
-                    <li><a href="https://www.t-won.com/" target="_blank">티원/도원스타일</a></li>
-                    <li><a href="https://www.63restaurant.co.kr/" target="_blank">63레스토랑</a></li>
-                    <li><a href="https://www.63convention.co.kr/" target="_blank">63컨벤션</a></li>
-                    <li><a href="https://www.plazawedding.co.kr/" target="_blank">플라자웨딩</a></li>
-                </ul>
-            </div>
-        </div>
-         -->
-    </div>
 
-    <!-- 가져옴 -->
-    
-    
-    <div class="scroll">
-        <div class="box">
-            <div class="txtbox">
-                <div class="guide_scroll" style="opacity: 0.5;"><span>SCROLL</span></div>
-            </div>
+
         </div>
     </div>
-</div>
+</body>
 
-<div id="allmenuBox">
-    <div class="bgbox"><div class="bgbox"></div></div>
-    <div class="btn_close"></div>
-    <div class="menuBox"></div>
-    <div class="allmenu_bottom"></div>
-</div>
-            <div id="container">
-                
-                <div id="preloader">
-                    <div id="status"></div>
-                </div>
-                <div id="fullpage">
-                    
-
-
-    <div class="section main1" id="section0">
-        <!-- visual  -->
-        <!--//이벤트 팝업 사용하지 않음 
-        <div class="container_popup layerPopup" v-show="isNotEmpty(layerPopups)">
-            <div v-for="(popup,index) in layerPopups" :id="'layer' + popup.id" :style="{'width': popup.width + 'px'}" class="p-0 popup_con">
-                <div id="pop_wrap" class="popupcont">
-                    <div id="pop_contents">
-                        <div class="box_02 popupBody" v-html="popup.content"></div>
-                    </div>
-                    <div class="popup-bottm">
-                        <span class="txt" style="cursor: pointer;">
-                            <label :for="'today_closed_' + popup.id">
-                                <input type="checkbox" :id="'today_closed_' + popup.id" @change="saveDontShow(popup.id)">
-                                오늘 하루 표시하지 않습니다
-                            </label>
-                        </span>
-                        <span class="btn"><a href="#" @click="saveDontShow(popup.id)">close</a></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-         -->
-        <div id="mainVisual"> 
-            <div class="mov">
-                <div class="mov_bg"></div>
-                <video loop="" muted="" playsinline="" data-autoplay="">
-                    <source src="resources/images/main/mov_new.mp4" type="video/mp4">
-                    Your browser does not support HTML5 video.
-                </video>
-
-            </div>
-            <div class="txtbox">
-                <div class="txt_3">Digital Bay</div>
-                <div class="txt txt_1"><div><span>버추얼스튜디오의 구축으로</span></div></div>
-                <div class="txt txt_2"><div><span>시공을 초월한 모든 가상의 공간을 창조합니다.</span></div></div>
-            </div>
-            <div class="main-news">
-                <h2 class="tit-news">Recent<br>News</h2>
-                <ul class="news-list">
-                    <li><a href="#none"><span>글로벌 방송,영상 산업 트렌드의 시작 BUSAN CONTENTS MARKET 부산콘텐츠마켓</span></a></li>
-                    <li><a href="#none"><span>DIGITAL-NOTICE10 공지사항 10번째 내용</span></a></li>
-                    <li><a href="#none"><span>DIGITAL-NOTICE09 공지사항 09번째 내용</span></a></li>
-                </ul>
-                <a href="/kr/news/press_list" class="more">View All</a>
-              </div>
-        </div>
-        <!-- //visual -->
-        <span class="b_txt">Connecting</span>
-    </div>
-
-    <!-- Business -->
-    <div class="section main2" id="section1">
-        <div class="listbox">
-            <ul>
-                <li>
-                    <div class="imgbox"><img src="resources/images/main/img_section2_1.jpg" alt=""></div>
-                    <div class="contbox">
-                        <span class="icon"><img src="resources/images/main/icon_section2_1.png" alt=""></span>
-                        <div class="txt_1">Fine-Dining</div>
-                        <div class="txt_2">외식 사업</div>
-                    </div>
-                    <div class="bg"></div>
-                    <div class="over">
-                        <span class="icon"><img src="resources/images/main/icon_section2_1.png" alt=""></span>
-                        <div class="txt_1">Fine-Dining</div>
-                        <div class="txt_2">외식 사업</div>
-                        <div class="txt_3">고객 한분 한분의 높은 가치에<br /> 맞는 음식과 공간을 제공</div>
-                        <a href="/kr/business.do#section1">자세히 보기</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="imgbox"><img src="resources/images/main/img_section2_2.jpg" alt=""></div>
-                    <div class="contbox">
-                        <span class="icon"><img src="resources/images/main/icon_section2_2.png" alt=""></span>
-                        <div class="txt_1">O2O</div>
-                        <div class="txt_2">온라인 투 오프라인 사업</div>
-                    </div>
-                    <div class="bg"></div>
-                    <div class="over">
-                        <span class="icon"><img src="resources/images/main/icon_section2_2.png" alt=""></span>
-                        <div class="txt_1">O2O</div>
-                        <div class="txt_2">온라인 투 오프라인 사업</div>
-                        <div class="txt_3">온라인을 통해 접한 고객님들이 다시<br /> 당사 오프라인 매장에 재방문하는 라이프스타일</div>
-                        <a href="/kr/business.do#section2">자세히 보기</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="imgbox"><img src="resources/images/main/img_section2_3.jpg" alt=""></div>
-                    <div class="contbox">
-                        <span class="icon"><img src="resources/images/main/icon_section2_3.png" alt=""></span>
-                        <div class="txt_1">Concession</div>
-                        <div class="txt_2">컨세션사업</div>
-                    </div>
-                    <div class="bg"></div>
-                    <div class="over">
-                        <span class="icon"><img src="resources/images/main/icon_section2_3.png" alt=""></span>
-                        <div class="txt_1">Concession</div>
-                        <div class="txt_2">컨세션사업</div>
-                        <div class="txt_3">다중복합시설과 골프장 같은<br /> 레저시설 내 식음 사업권을 위탁</div>
-                        <a href="/kr/business.do#section3">자세히 보기</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <span class="b_txt">Business</span>
-    </div>
-    <!-- //Business -->
-
-    <!-- About -->
-    <div class="section main3" id="section2">
-
-        <div class="aboutBox">
-            <div class="titleBox">
-                <div class="txt_1">음식, 문화, 그리고 사람</div>
-                <div class="txt_2"><span>About</span> 더테이스터블</div>
-                <div class="txt_3">더테이스터블은 컨텐츠 경쟁력을 기반으로 우리의 컨텐츠를 온/오프라인 플랫폼을 통해 고객에게 제공합니다</div>
-            </div>
-
-            <div class="listbox">
-                <ul>
-                    <li>
-                        <div class="icon">
-                            <span><img src="resources/images/main/icon_section3_1.png" alt=""></span>
-                        </div>
-                        <div class="num"><strong class="counter">15</strong>개점</div>
-                        <div class="txt">브랜드 레스토랑</div>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <span><img src="resources/images/main/icon_section3_2.png" alt=""></span>
-                        </div>
-                        <div class="num"><strong class="counter">4</strong>개점</div>
-                        <div class="txt">컨벤션</div>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <span><img src="resources/images/main/icon_section3_3.png" alt=""></span>
-                        </div>
-                        <div class="num"><strong class="counter">3</strong>개점</div>
-                        <div class="txt">골프장 F&B</div>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <span><img src="resources/images/main/icon_section3_4.png" alt=""></span>
-                        </div>
-                        <div class="num"><strong class="counter">2</strong>개소</div>
-                        <div class="txt">휴게소 F&B</div>
-                    </li>
-                    <li>
-                        <div class="icon">
-                            <span><img src="resources/images/main/icon_section3_5.png" alt=""></span>
-                        </div>
-                        <div class="num"><strong class="counter">3</strong>개점</div>
-                        <div class="txt">캐주얼 레스토랑</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <span class="b_txt">About</span>
-    </div>
-    <!-- //About -->
-
-    <!-- Brand -->
-    <div class="section main4" id="section3">
-
-        <div class="brandBox">
-            <div class="titleBox">
-                <div class="txt_1">당신에게 행복을 선사합니다</div>
-                <div class="txt_2"><span>Brand</span></div>
-                <div class="txt_3">더테이스터블는 플랫폼 상품을 기획하고 판매하여 최고의 브랜드로 고객님께 보답하고자 합니다</div>
-            </div>
-
-            <div class="listbox">
-
-                <div class="owl-carousel owl-theme">
-                    <!-- 3 -->
-                    <div class="item">
-                        <div class="imgbox">
-                            <a href="/kr/brand.do#section1">
-                                <img src="resources/images/main/img_brand3.jpg" alt="">
-                                <div class="txt">63 Restaurant</div>
-                                <span class="overbox"><span class="bg"></span><span class="more">자세히 보기</span></span>
-                            </a>
-                        </div>
-                        <div class="title"><img src="resources/images/main/tit_brand3.png" alt=""></div>
-                    </div>
-                    <!-- //3 -->
-                    <!-- 4 -->
-                    <div class="item">
-                        <div class="imgbox">
-                            <a href="/kr/brand.do#section2">
-                                <img src="resources/images/main/img_brand4.jpg" alt="">
-                                <div class="txt">63 Convention</div>
-                                <span class="overbox"><span class="bg"></span><span class="more">자세히 보기</span></span>
-                            </a>
-                        </div>
-                        <div class="title"><img src="resources/images/main/tit_brand4.png" alt=""></div>
-                    </div>
-                    <!-- //4 -->
-                    <!-- 6 -->
-                    <div class="item">
-                        <div class="imgbox">
-                            <a href="/kr/brand.do#section3">
-                                <img src="resources/images/main/img_brand6.jpg" alt="">
-                                <div class="txt">Plaza Wedding</div>
-                                <span class="overbox"><span class="bg"></span><span class="more">자세히 보기</span></span>
-                            </a>
-                        </div>
-                        <div class="title"><img src="resources/images/main/tit_brand6.png" alt=""></div>
-                    </div>
-                    <!-- //6 -->
-                    <!-- 1 -->
-                    <div class="item">
-                        <div class="imgbox">
-                            <a href="/kr/brand.do#section4">
-                                <img src="resources/images/main/img_brand1.jpg" alt="">
-                                <div class="txt">Taoyuen Style</div>
-                                <span class="overbox"><span class="bg"></span><span class="more">자세히 보기</span></span>
-                            </a>
-                        </div>
-                        <div class="title"><img src="resources/images/main/tit_brand1.png" alt=""></div>
-                    </div>
-                    <!-- //1 -->
-                    <!-- 2 -->
-                    <div class="item">
-                        <div class="imgbox">
-                            <a href="/kr/brand.do#section5">
-                                <img src="resources/images/main/img_brand2.jpg" alt="">
-                                <div class="txt">T-won</div>
-                                <span class="overbox"><span class="bg"></span><span class="more">자세히 보기</span></span>
-                            </a>
-                        </div>
-                        <div class="title"><img src="resources/images/main/tit_brand2.png" alt=""></div>
-                    </div>
-                    <!-- //2 -->
-                    <!-- 7 -->
-                    <div class="item">
-                        <div class="imgbox">
-                            <a href="/kr/brand.do#section7">
-                                <img src="resources/images/main/img_brand7.jpg" alt="">
-                                <div class="txt">Baeknihyang Style</div>
-                                <span class="overbox"><span class="bg"></span><span class="more">자세히 보기</span></span>
-                            </a>
-                        </div>
-                        <div class="title"><img src="resources/images/main/tit_brand7.png" alt=""></div>
-                    </div>
-                    <!-- //7 -->
-                    <!-- 5 -->
-                    <div class="item">
-                        <div class="imgbox">
-                            <a href="/kr/brand.do#section6">
-                                <img src="resources/images/main/img_brand5.jpg" alt="">
-                                <div class="txt">63 Dining Kit</div>
-                                <span class="overbox"><span class="bg"></span><span class="more">자세히 보기</span></span>
-                            </a>
-                        </div>
-                        <div class="title"><img src="resources/images/main/tit_brand5.png" alt=""></div>
-                    </div>
-                    <!-- //5 -->
-
-                </div>
-
-                <div class="btnBox">
-                    <div class="btn_pn brand-button-prev"></div>
-                    <div class="icon"></div>
-                    <div class="btn_pn brand-button-next"></div>
-                </div>
-
-            </div>
-        </div>
-
-        <span class="b_txt">Brand</span>
-    </div>
-    <!-- //Brand -->
-
-
-
-
-
-
-<!-- ##################################################################### 5 section START.-->
-    <div class="section main5" id="section4">
-        <div class="customerBox">
-            <div class="banner-area">
-                <div class="titBox">
-                    <div class="tit">PARTNER</div>
-                    <div class="txt">시, 군, 대학, 기관, 업체 등 부산영상위원회와<br/>상호발전을 위한 업무협약을 맺은 파트너사입니다.</div>
-                </div>
-
-                <div class="banner">
-                    
-                </div>
-            </div>
-
-            <div class="map-area">
-                <div class="map-box" id="kakaoMapArea" style="width: 100%;height: 530px;"></div>
-                <div class="address-box">
-                    <div class="address-txt">
-                        <p>부산광역시 해운대구 해운대해변로 52</p>
-                        <p>부산영화촬영스튜디오/디지털베이</p>
-                        <dl>
-                            <dt>전화</dt>
-                            <dd>052-72000-322</dd>
-                        </dl>
-                        <dl>
-                            <dt>팩스</dt>
-                            <dd>052-72000-320</dd>
-                        </dl>
-                        <dl>
-                            <dt>이메일</dt>
-                            <dd>BFC@BFC.OR.KR</dd>
-                        </dl>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="btn_top" id="moveTo"><a href="javascript:void(0);">TOP</a></div>
-
-        <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=67f0b37dbb6dace657c0757e578ee937"></script>
-        <script type="text/javascript">
-        function displayMap(locationCd, posX, posY, fairName) {
-            // 지도		
-            var container = document.getElementById(locationCd);
-            var options = { //지도를 생성할 때 필요한 기본 옵션
-                center : new daum.maps.LatLng(posX, posY), //지도의 중심좌표.
-                level : 3
-            //지도의 레벨(확대, 축소 정도)
-            };
-            var map = new daum.maps.Map(container, options); //지도 생성 및 객체 리턴
-        
-            var imgUrl = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png'
-            var imgSize = new daum.maps.Size(37, 41);
-            var markerImage = new daum.maps.MarkerImage(imgUrl, imgSize);
-            var markerPosition = new daum.maps.LatLng(posX, posY); // 마커가 표시될 위치
-            var marker = new daum.maps.Marker({ // 마커를 생성
-                position : markerPosition,
-                //clickable: true,
-                image : markerImage
-            });
-        
-            marker.setMap(map);// 마커 생성
-        
-            var overlayContent = '<div class="customoverlay">'
-                    + '<a target="_blank" href="https://map.daum.net/link/map/'+ fairName +','+posX+','+posY+'">'
-                    + '<span class="title">' + fairName + '</span></a>'
-                    + '</div>';
-        
-            var overlayPosition = new daum.maps.LatLng(posX, posY);
-            var customOverlay = new daum.maps.CustomOverlay({
-                map : map,
-                position : overlayPosition,
-                content : overlayContent,
-                yAnchor : 1
-            });
-        }
-        var icoordx = '35.16107286231004';
-        var icoordy = '129.14055569820204';
-        $(document).ready(function () {
-            displayMap('kakaoMapArea', 35.16107286231004,129.14055569820204, '');
-        });
-
-        </script>
-        
-        
-    </div>
-<!-- //##################################################################### 5 section END. -->
-
-    <!-- footer -->
-    <div class="section main6 fp-auto-height" id="section5">
-        <footer>
-            <div class="fbox">
-                <div class="sitemap-allmenu">
-                    <ul>
-                        <li>
-                            <a href="#1">Busan Cinema Studio</a>
-                            <ul class="depth2 menu1">
-                                <li><a href="#none">digital bay</a></li>
-                                <li><a href="#none">busan cinema studio</a></li>
-                                <li><a href="#none">show reel</a></li>
-                                <li><a href="#none">filography</a></li>
-                                <li><a href="#none">patner</a></li>
-                                <li><a href="#none">location</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#2">Studio</a>
-                            <ul class="depth2 menu2">
-                                <li><a href="#none">스튜디오 A</a></li>
-                                <li><a href="#none">스튜디오 B</a></li>
-                                <li><a href="#none">부대시설 1층</a></li>
-                                <li><a href="#none">부대시설 2층</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#2">Digital Bay</a>
-                            <ul class="depth2 menu2">
-                                <li><a href="#none">XR Tech Lab</a></li>
-                                <li><a href="#none">스튜디오 B</a></li>
-                                <li><a href="#none">디지털 촬영 장비</a></li>
-                                <li><a href="#none">디지털 특수 장비</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#3">palm Bay</a>
-                            <ul class="depth2 menu4">
-                                <li><a href="#none">3D Asset</a></li>
-                                <li><a href="#none">동영상</a></li>
-                                <li><a href="#none">이미지</a></li>
-                                <li><a href="#none">서식</a></li>
-                                <li><a href="#none">웹하드</a></li>                            
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#4">Colour Bay</a>
-                            <ul class="depth2 menu4">
-                                <li><a href="#none">색정보실</a></li>
-                                <li><a href="#none">편집실</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#6">Community</a>
-                            <ul class="depth2 menu5">
-                                <li><a href="#none">공지사항</a></li>
-                                <li><a href="#none">자유게시판</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#7">Service</a>
-                            <ul class="depth2 menu5">
-                                <li><a href="#none">회원가입</a></li>
-                                <li><a href="#none">ID/PW찾기</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="fmenu">
-                    <div class="smenu">
-                        <a href="/kr/privacy.do">개인정보처리방침</a>
-                        <a href="/kr/email.do">이메일무단수집거부</a>
-                    </div>
-                    <div class="scmenu">
-                        
-                    </div>
-                </div>
-                <div class="infobox">
-                    <div class="address">부산광역시 해운대구 해운대해변로 52(우 612-824)</div>
-                    <p><strong>TEL.</strong> <a href="tel:051-7200-322">051-7200-322</a>  <span class="bar">|</span>  <strong>FAX.</strong> 051-7200-320 <!-- <span class="bar">|</span> <strong>고객센터.</strong> 000-000-0000 --></p>
-                    <div class="copyright">Copyright ⓒ Busan Production Center-digital Bay. All rights Reserved. </div>
-                </div>
-            </div>
-        </footer>
-    </div>
-
-    
-<!--General -->
-<script src = "resources/js/navMapper.js"></script>
-<!-- <script src = "resources/js/axiosRequests.js"></script> //브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리-->
-<script src = "resources/js/poly.js"></script>
-<script src = "resources/js/gdi-functions.js"></script>
-<script src = "resources/js/surveyConstant.js"></script>
-<script src = "resources/js/jquery.malihu.PageScroll2id.js"></script>
-<!-- GDi Calendar -->
-<script src="resources/js/gdiCalendar.js"></script>
-<!-- highchart -->
-<script src="resources/js/highchart.js"></script>
-<script src="resources/js/series-label.js"></script>
-<script src="resources/js/highchart-exporting.js"></script>
-<script src="resources/js/highchart-data.js"></script>
-<script src = "resources/js/canvasImage.js"></script>
-
-<script src="resources/js/jquery.waypoints.min.js"></script>
-<script src="resources/js/jquery.countup.js"></script>
-
-
-
-
-
-
-<script>
-    $(window).on("resize",function(){
-        section1.positionPopup();
-    });
-
-    var section1 = new Vue({
-        el: "#section0",
-        data: {
-            //NOTICE
-            loadingNotice: false,
-            filterPopup: {
-                division: "일반팝업",
-                except: [],
-                lang: "kr",
-                pageIndex: 1,
-                pageUnit: 100
-            },
-            hasChanged: false,
-            layerPopups: [],
-            dontShowAgain : false
-        },
-        methods: {
-            leftpx: function(index) {
-                if(index != 0) {
-                    console.log("{'left' : " + this.layerPopups[index-1].width + "'px'}")
-                }
-            },
-            triggerPopups : function(){
-                var req = api.getList(Constants.Popup.LIST + prepUrl(this.filterPopup));
-                req.then(function(response) {
-                    if(response.data.hasOwnProperty('list') && response.data.list.length > 0) {
-                        section1.layerPopups = response.data.list;
-                        for(var i = 0;i<section1.layerPopups.length;i++){
-                            section1.openMainLayerPop('#layer' + section1.layerPopups[i].id);
-                        }
-                        setTimeout(function(){
-                            section1.positionPopup();
-                        },100)
-                    }
-                })
-            },
-            positionPopup: function(){
-                $('.container_popup').css('top', $('.header').height());
-                var popLeft = $(".container_popup").width()/2;
-                var width = $(window).width()/2;
-                $(".container_popup").css({"left": (width - popLeft) + "px"});
-            },
-            getExceptPopup : function(){
-                if(window.localStorage.getItem(Constants.Storage.Section.DONTSHOWLAYERPOPUP) != null){
-                    var excepts = JSON.parse(window.localStorage.getItem(Constants.Storage.Section.DONTSHOWLAYERPOPUP));
-                    var newArr = excepts.map(function(val){
-                        if(moment(daytime).isBefore(val.expiredDate)){
-                            return val.id;
-                        }
-                    });
-
-                    this.filterPopup.except = newArr;
-                }
-
-                this.triggerPopups()
-            },
-            saveDontShow : function(id){
-                if($("#today_closed_" + id).is(':checked')) {
-                    var dontShowToday = {
-                        id: id,
-                        expiredDate: moment(daytime).add(1,'day').format(dFormat_3)
-                    }
-
-                    /*storage update*/
-                    var popups;
-
-                    if (!window.localStorage.getItem(Constants.Storage.Section.DONTSHOWLAYERPOPUP)) {
-                        popups = [];
-                    } else {
-                        popups = JSON.parse(window.localStorage.getItem(Constants.Storage.Section.DONTSHOWLAYERPOPUP));
-                    }
-                    /*storage update*/
-                    /*not duplicate*/
-                    popups.filter(function (val, index) {
-                        if(val.id == id) {
-                            popups.splice(index, 1);
-                        }
-                    })
-                    /*not duplicate*/
-
-                    popups.push(dontShowToday);
-                    window.localStorage.setItem( Constants.Storage.Section.DONTSHOWLAYERPOPUP, JSON.stringify(popups) );
-                }
-
-                this.closeMainlayerPop('layer' + id)
-            },
-            closeMainlayerPop : function(id) {
-                var pop_ = eval("document.getElementById('" + id + "').style");
-                pop_.visibility = 'hidden';
-                pop_.zIndex = 0;
-            },
-            openMainLayerPop : function(id) {
-                setTimeout(function(){
-                    var WinHeight = $(window).height();
-
-                    var pop_ = $(id).children(".layerPop_inner");
-                    $(id).fadeIn(100);
-
-                    var PopHeight = $(id).children(".layerPop_inner").height();
-                    var Padd = WinHeight - PopHeight;
-
-                    if (WinHeight >= PopHeight) {
-                        $(pop_).css({
-                            paddingTop: Padd / 2
-                        });
-                    } else {
-                        $(pop_).css({
-                            paddingTop: "100px"
-                        });
-                    }
-                }, 50);
-            },
-        },
-        created: function () {
-            this.getExceptPopup();
-        }
-    });
-
-    var section4 = new Vue({
-        el: "#section4",
-        data: {
-            isInserting:false,
-            brandList: [],
-            branchList: [],
-            requestTypes: [],
-            replyMethods: [],
-            mainRecruit: [],
-            hasMainRecruit: false,
-            frmData:{
-                lang        			:       "kr",
-                fullname    			:       "",
-                replyMethod    			:       "PHONE",
-                phone				    :       "",
-                email			        :       "",
-                content			        :       "",
-            },
-            agreement : false,
-            validation: {
-                fullname: {required: true},
-                phone: {required: true},
-            },
-            errors:{}
-        },
-        methods:{
-            isNumber: function(evt) {
-                evt = (evt) ? evt : window.event;
-                var charCode = (evt.which) ? evt.which : evt.keyCode;
-                if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46) {
-                    evt.preventDefault();
-                } else {
-                    return true;
-                }
-            },
-            getMainNoticeData: function () {
-                getReqMainPageNotice('kr').then(function (response) {
-                    if (response.data.notices.length > 0) {
-                        this.section4.mainRecruit = response.data.notices[0];
-                        this.section4.hasMainRecruit = true;
-                    }
-                });
-            },
-            frmSubmit : function(){
-                this.errors = {};
-                this.errors = validate(this.validation,this.frmData);
-                if(Object.keys(this.errors).length > 0){
-                    if (this.errors.fullname){
-                        alert('이름을 입력하세요.');
-                        $("#fullname").focus()
-                        return false;
-                    } else if(this.errors.phone) {
-                        alert('휴대폰번호를 입력하세요.');
-                        $("#phone").focus()
-                        return false;
-                    } else {
-                        alert('필수 입력값을 모두 입력해 주세요.');
-                    }
-                }else{
-                    if(!this.agreement){
-                        alert('모든 약관을 확인하고 동의해야 합니다.');
-                        return false;
-                    }
-
-                    this.isInserting = true;
-                    var formData = new FormData();
-
-                    formData.append("requestType",      'SIMPLE');
-                    formData.append("fullname",         this.frmData.fullname);
-                    formData.append("replyMethod",      this.frmData.replyMethod);
-                    formData.append("phone",            this.frmData.phone);
-                    formData.append("content",          this.frmData.content);
-                    formData.append("lang",             this.frmData.lang);
-
-                    axios.post(Constants.Customer.INSERT, formData, config)
-                    .then(function(response){
-                        if(response.data.msg == 'success'){
-                            alert('등록되었습니다.');
-                            this.section4.frmData = {};
-                            this.section4.agreement = false;
-                            this.section4.isInserting = false;
-                        }else{
-                            alert('실패하였습니다.');
-                            this.section4.isInserting = false;
-                        }
-                    });
-                }
-            }
-        },
-        created: function () {
-            this.getMainNoticeData();
-        }
-    });
-</script>
-
-
-
-	
-                </div>
-                
-<script src="resources/js/shortcut.js"></script>
-<script src="resources/js/jquery.waypoints.min.js"></script>
-<script src="resources/js/jquery.countup.js"></script>
-<script>
-    $('.counter').countUp({
-        delay: 10,
-        time: 3000
-    });
-
-</script>
-<script src="resources/js/owl.carousel.js"></script> <!--//상단 메뉴 레이아웃 구동-->
-<script src="resources/js/jquery.mousewheel.min.js"></script>
-<script src="resources/js/jquery.fullpage.min.js"></script> <!--//전체 메인 section -->
-<script>
-    $(function(){
-        $("html,body").css({
-            overflow:"hidden"
-        })
-        $('body').on('scroll touchmove mousewheel', function(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            return false;
-        });
-        setTimeout(function(){
-            $('body').off('scroll touchmove mousewheel');
-            $("#loading").stop().fadeOut(800);
-        },800);
-
-        $('#fullpage').fullpage({
-            //sectionsColor: ['#1bbc9b', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff'],
-            //anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage', '5thpage', 'lastPage'],
-            verticalCentered: true,
-            menu: '#menu',
-            navigation: true,
-            scrollingSpeed: 800,
-            responsiveWidth: 1023,
-            afterLoad: function(anchorLink, index){
-                var navgtTxtset = $('#fp-nav').find('span');
-                    navgtTxtset.eq(0).html('Main');
-                    navgtTxtset.eq(1).html('Digital Bay');
-                    navgtTxtset.eq(2).html('SHOWREEL');
-                    navgtTxtset.eq(3).html('Filmography');
-                    navgtTxtset.eq(4).html('PATENER・MAP');
-                
-                // var navgtActive = $('#fp-nav').find('.active > span');
-                // if(index == 1) navgtActive.text('Main');
-                // else if (index == 2) navgtActive.text('Digital Bay');
-                // else if (index == 3) navgtActive.text('SHOWREEL');
-                // else if (index == 4) navgtActive.text('Filmography');
-                // else if (index == 5) navgtActive.text('PATENER・MAP');
-
-                $('.section').each(function() {
-                    if( $('.main1').is('.active') ){
-                        $('.main1').addClass('on');
-                        $('.main2').addClass('on');
-                        $('.main3').addClass('on');
-                        $('.main4').addClass('on');
-                    }else{
-                        $('.main1').removeClass('on');
-                    }
-                    if( $('.main2').is('.active') ){
-                        $('.main2').addClass('on');
-                        $('.main1').addClass('on');
-                        $('.main3').addClass('on');
-                        $('.main4').addClass('on');
-                        $('.main5').addClass('on');
-                    }else{
-                        $('.main2').removeClass('on');
-                    }
-                    if( $('.main3').is('.active') ){
-                        $('.main3').addClass('on');
-                        $('.main1').addClass('on');
-                        $('.main2').addClass('on');
-                        $('.main4').addClass('on');
-                        $('.main5').addClass('on');
-                        $('.counter').countUp();
-                    }else{
-                        $('.main3').removeClass('on');
-                    }
-                    if( $('.main4').is('.active') ){
-                        $('.main4').addClass('on');
-                        $('.main1').addClass('on');
-                        $('.main2').addClass('on');
-                        $('.main3').addClass('on');
-                        $('.main5').addClass('on');
-                        $('.owl-carousel').on('scroll mousewheel', function(event) {
-                            event.preventDefault();
-                            event.stopPropagation();
-                            return false;
-                        });
-                    }else{
-                        $('.main4').removeClass('on');
-                    }
-                    if( $('.main5').is('.active') ){
-                        $('.main5').addClass('on');
-                        $('.main1').addClass('on');
-                        $('.main2').addClass('on');
-                        $('.main3').addClass('on');
-                        $('.main4').addClass('on');
-                    }else{
-                        $('.main5').removeClass('on');
-                    }
-                    if( $('.main6').is('.active') ){
-                        $('.main5').addClass('on');
-                    }
-                });
-            },
-
-        });
-    });
-    $('#moveTo').click(function () {
-        //$.fn.fullpage.setScrollingSpeed(0); 효과를 없애고싶을때
-        $.fn.fullpage.moveTo(1, 1); // 이동하고싶은 페이지
-        //$.fn.fullpage.setScrollingSpeed(700); 효과를 없애고싶을때
-    });
-</script>
-
-
-            </div>
-        </div>
-    </body>
 </html>
