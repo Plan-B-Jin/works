@@ -5,13 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="format-detection" content="telephone=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
-    <!-- //알수 없음
-    <meta name="_csrf" content="739cca18-08fe-4705-a16c-8fa2fd9bc560"/>
-    <meta name="_csrf_header" content="X-CSRF-TOKEN"/>
-    -->
     <title>디지털베이</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="../../resources/images/common/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/kr/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../resources/css/gdi.css">
+    <script src="../../resources/js/jquery.1.12.4.min.js"></script>
+    <script src="../../resources/js/common.js"></script>
+    <script src="../../resources/js/constants.js"></script>
+    <script src="../../resources/js/swiper.min.js"></script>
+    <script src="../../resources/js/main.js"></script>
+    <!--//메뉴 레이아웃 구동-->
+
+    <script src="../../resources/js/jquery.waypoints.min.js"></script>
+    <script src="../../resources/js/owl.carousel.js"></script>
+    <!--//상단 메뉴 레이아웃 구동-->
+    <script src="../../resources/js/jquery.mousewheel.min.js"></script>
+    <script src="../../resources/js/jquery.fullpage.min.js"></script>
+    <!--//전체 메인 section -->
+    
+    <!-- add : Gheem Bona -->
+    <link rel="stylesheet" type="text/css" href="../../resources/css/mainCustom.css" />
+    <link rel="stylesheet" type="text/css" href="../../resources/css/subCustom.css" />
+    <link href="https://kit-pro.fontawesome.com/releases/v5.15.4/css/pro.min.css" rel="stylesheet" />
+
+    <!--[if lt IE 9]>
+    <script src="../../resources/js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script>
+         $('#moveTo').click(function () {
+        //$.fn.fullpage.setScrollingSpeed(0); 효과를 없애고싶을때
+        $.fn.fullpage.moveTo(1, 1); // 이동하고싶은 페이지
+        //$.fn.fullpage.setScrollingSpeed(700); 효과를 없애고싶을때
+    });
+    </script>
 </head>
 <body>
+
+
+<div id="wrap">
     <!-- header -->
     <header>
         <h1><a href="index.html">디지털베이</a></h1>
@@ -55,7 +88,7 @@
                                 <li><a href="#none">동영상</a></li>
                                 <li><a href="#none">이미지</a></li>
                                 <li><a href="#none">서식</a></li>
-                                <li><a href="#none">웹하드</a></li>                            
+                                <li><a href="#none">웹하드</a></li>
                             </ul>
                         </li>
                         <li>
@@ -91,7 +124,6 @@
         <div class="gnb_bg"></div>
     </header>
     <!-- /header -->
-
     <div id="rightBox">
         <div class="mbox">
             <div class="language account">
@@ -101,105 +133,125 @@
                 </div>
             </div>
         </div>
-        <div class="scroll">
-            <div class="box">
-                <div class="txtbox">
-                    <div class="guide_scroll" style="opacity: 0.5;"><span>SCROLL</span></div>
-                </div>
+    </div>
+    <div id="allmenuBox">
+        <div class="bgbox">
+            <div class="bgbox"></div>
+        </div>
+        <div class="btn_close"></div>
+        <div class="menuBox"></div>
+        <div class="allmenu_bottom"></div>
+    </div>
+
+    <div id="container" class="subpg">
+        <!-- subVisual -->
+        <div id="depthNav" class="subVisual subv1 subv1">
+            <div class="contTitle">
+                <div class="subTitle"><strong>COULOUR BAY</strong></div>
             </div>
         </div>
+        <!-- /subVisual -->
+    <!-- ####################################################### : SUB CONTENT -->
+        <div class="company-about">
+
+
+        </div>
+    <!-- ####################################################### : /SUB CONTENT -->
     </div>
-
-
-
-
-
     
-    <!-- footer -->
-    <div class="section main6 fp-auto-height" id="section5">
-        <footer>
-            <div class="fbox">
-                <div class="sitemap-allmenu">
-                    <ul>
-                        <li>
-                            <a href="#1">Busan Cinema Studio</a>
-                            <ul class="depth2 menu1">
-                                <li><a href="#none">digital bay</a></li>
-                                <li><a href="#none">busan cinema studio</a></li>
-                                <li><a href="#none">show reel</a></li>
-                                <li><a href="#none">filography</a></li>
-                                <li><a href="#none">patner</a></li>
-                                <li><a href="#none">location</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#2">Studio</a>
-                            <ul class="depth2 menu2">
-                                <li><a href="#none">스튜디오 A</a></li>
-                                <li><a href="#none">스튜디오 B</a></li>
-                                <li><a href="#none">부대시설 1층</a></li>
-                                <li><a href="#none">부대시설 2층</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#2">Digital Bay</a>
-                            <ul class="depth2 menu2">
-                                <li><a href="#none">XR Tech Lab</a></li>
-                                <li><a href="#none">스튜디오 B</a></li>
-                                <li><a href="#none">디지털 촬영 장비</a></li>
-                                <li><a href="#none">디지털 특수 장비</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#3">palm Bay</a>
-                            <ul class="depth2 menu4">
-                                <li><a href="#none">3D Asset</a></li>
-                                <li><a href="#none">동영상</a></li>
-                                <li><a href="#none">이미지</a></li>
-                                <li><a href="#none">서식</a></li>
-                                <li><a href="#none">웹하드</a></li>                            
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#4">Colour Bay</a>
-                            <ul class="depth2 menu4">
-                                <li><a href="#none">색정보실</a></li>
-                                <li><a href="#none">편집실</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#6">Community</a>
-                            <ul class="depth2 menu5">
-                                <li><a href="#none">공지사항</a></li>
-                                <li><a href="#none">자유게시판</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#7">Service</a>
-                            <ul class="depth2 menu5">
-                                <li><a href="#none">회원가입</a></li>
-                                <li><a href="#none">ID/PW찾기</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                <div class="fmenu">
-                    <div class="smenu">
-                        <a href="/kr/privacy.do">개인정보처리방침</a>
-                        <a href="/kr/email.do">이메일무단수집거부</a>
-                    </div>
-                    <div class="scmenu">
-                        
-                    </div>
-                </div>
-                <div class="infobox">
-                    <div class="address">부산광역시 해운대구 해운대해변로 52(우 612-824)</div>
-                    <p><strong>TEL.</strong> <a href="tel:051-7200-322">051-7200-322</a>  <span class="bar">|</span>  <strong>FAX.</strong> 051-7200-320 <!-- <span class="bar">|</span> <strong>고객센터.</strong> 000-000-0000 --></p>
-                    <div class="copyright">Copyright ⓒ Busan Production Center-digital Bay. All rights Reserved. </div>
-                </div>
-            </div>
-        </footer>
+    <div class="btn_top " id="moveTo">
+        <a href="javascript:void(0);">
+            <i class="icon-top"></i>
+        </a>
     </div>
-    <!--//footer -->
+    <!-- footer -->
+    <footer>
+        <div class="fbox">
+            <div class="sitemap-allmenu">
+                <ul>
+                    <li>
+                        <a href="#1">Busan Cinema Studio</a>
+                        <ul class="depth2 menu1">
+                            <li><a href="#none">digital bay</a></li>
+                            <li><a href="#none">busan cinema studio</a></li>
+                            <li><a href="#none">show reel</a></li>
+                            <li><a href="#none">filography</a></li>
+                            <li><a href="#none">patner</a></li>
+                            <li><a href="#none">location</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#2">Studio</a>
+                        <ul class="depth2 menu2">
+                            <li><a href="#none">스튜디오 A</a></li>
+                            <li><a href="#none">스튜디오 B</a></li>
+                            <li><a href="#none">부대시설 1층</a></li>
+                            <li><a href="#none">부대시설 2층</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#2">Digital Bay</a>
+                        <ul class="depth2 menu2">
+                            <li><a href="#none">XR Tech Lab</a></li>
+                            <li><a href="#none">스튜디오 B</a></li>
+                            <li><a href="#none">디지털 촬영 장비</a></li>
+                            <li><a href="#none">디지털 특수 장비</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#3">palm Bay</a>
+                        <ul class="depth2 menu4">
+                            <li><a href="#none">3D Asset</a></li>
+                            <li><a href="#none">동영상</a></li>
+                            <li><a href="#none">이미지</a></li>
+                            <li><a href="#none">서식</a></li>
+                            <li><a href="#none">웹하드</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#4">Colour Bay</a>
+                        <ul class="depth2 menu4">
+                            <li><a href="#none">색정보실</a></li>
+                            <li><a href="#none">편집실</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#6">Community</a>
+                        <ul class="depth2 menu5">
+                            <li><a href="#none">공지사항</a></li>
+                            <li><a href="#none">자유게시판</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#7">Service</a>
+                        <ul class="depth2 menu5">
+                            <li><a href="#none">회원가입</a></li>
+                            <li><a href="#none">ID/PW찾기</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="fmenu">
+                <div class="smenu">
+                    <a href="/kr/privacy.do">개인정보처리방침</a>
+                    <a href="/kr/email.do">이메일무단수집거부</a>
+                </div>
+                <div class="scmenu">
+                    <a class="link-youtube"><i class="fab fa-youtube"></i>youtube</a>
+                    <a class="link-facebook"><i class="fab fa-facebook-square"></i>facebook</a>
+                </div> 
+            </div>
+            <div class="infobox">
+                <ul class="address">
+                    <li>부산광역시 해운대구 해운대해변로 52(우 612-824)</li>
+                    <li class="bar">TEL.<a href="tel:051-7200-322">051-7200-322</a></li>
+                    <li class="bar">FAX. 051-7200-320</li>
+                </ul>
+                <p class="copyright">Copyright ⓒ Busan Production Center-digital Bay. All rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!--/footer -->
+</div>
 </body>
 </html>
