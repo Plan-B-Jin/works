@@ -157,7 +157,7 @@ header #navi #gnb > ul > li > ul > li a { font-size:14px; line-height:12px; }
 .allmenu a > span:before { content:""; display:block; width:40px; height:1px; background-color:#fff; position:absolute; right: 0; top: 10px; transition:all 0.3s ease-in-out; } 
 .allmenu a > span:after { content:""; display:block; width:40px; height:1px; background-color:#fff; position:absolute; right:0; top: 30px; transition:all 0.3s ease-in-out; } 
 /*.allmenu a > span > span { position:absolute; left:0; top:16px; opacity:0; font-family: 'Poppins', sans-serif; color:#fff; font-size:7px; font-weight:300; letter-spacing:0.1em; width:40px; display:block; transition:all 0.3s ease-in-out; } */
-.allmenu a > span > span { position:absolute; left:50%; top:17px; margin:0 0 0 -14px; opacity:0; overflow:hidden; text-indent:-9999em; width:28px; height:7px; background:url(../../images/common/logo@2x.png) center center no-repeat; transition:all 0.3s ease-in-out; } 
+.allmenu a > span > span { position:absolute; left:50%; top:17px; margin:0 0 0 -14px; opacity:0; overflow:hidden; text-indent:-9999em; width:28px; height:7px; background:url(../../images/common/txt_menu.png) center center no-repeat; transition:all 0.3s ease-in-out; } 
 .allmenu a:hover > span > span { opacity:1; } 
 .allmenu a:hover > span:before,
 .allmenu a:hover > span:after { width:20px; } 
@@ -276,7 +276,7 @@ header .searchTop.on input[type="text"] { width:90px; }
 #allmenuBox #gnb > ul > li > ul > li { position:relative; margin:30px 0 0 0; font-size:20px; line-height:16px; color:#333; font-weight:400; transition:all 0.5s 0.0s ease-in-out; opacity:0; animation:gnbSub 0.5s 0.3s; animation-fill-mode:forwards; } 
 #allmenuBox #gnb > ul > li > ul > li:first-child { margin:0; } 
 #allmenuBox #gnb > ul > li > ul > li a { position:relative; font-weight:400; display:inline-block; color:#333; z-index:5; } 
-#allmenuBox #gnb > ul > li > ul > li a:hover { color:#e98343; } 
+#allmenuBox #gnb > ul > li > ul > li a:hover {color: #1cb1ef;} 
 @media screen and (max-width:1600px) {#allmenuBox #gnb { top:160px; } 
 #allmenuBox #gnb > ul > li { margin:30px 0; font-size:35px; line-height:30px; min-height:26px; } 
 #allmenuBox #gnb > ul > li ul { padding: 0 0 20px 460px !important; top:-26px; } 

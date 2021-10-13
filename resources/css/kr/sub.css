@@ -4,7 +4,7 @@
 .subVisual.subv2 { background-image:url(../../../resources/images/sub/bg_subVisual2.jpg); }
 .subVisual.subv3 { background-image:url(../../../resources/images/sub/bg_subVisual3.jpg); }
 .subVisual.subv4 { background-image:url(../../../resources/images/sub/bg_subVisual4.jpg); }
-.subVisual.subv5 { background-image:url(../../../resources/images/sub/bg_subVisual5.jpg); }
+.subVisual.subv5 { background-image:url(../../images/common/subvisual/visual@2x.png); }
 .subVisual.subv10 { background-image:url(../../../resources/images/sub/bg_subVisual10.jpg); }
 
 .inner { position:relative; max-width:1510px; margin:0 auto; -webkit-box-sizing:border-box; -moz-box-sizing:border-box; box-sizing:border-box; }
@@ -15,8 +15,8 @@
 
 
 /* title */
-.contTitle { position:absolute; top:50%; left:0; transform:translateY(-50%); margin-top:50px; text-align:center; width:100%; }
-.contTitle .subTitle { position:relative; font-size:56px; color:#fff; font-weight:200; text-transform:uppercase; }
+.contTitle {position:absolute;top:50%;left:0;transform:translateY(-50%);margin-top: 30px;text-align:center;width:100%;}
+.contTitle .subTitle {position:relative;font-size: 40px;color:#fff;font-weight: bold;text-transform:uppercase;}
 .contTitle .subTitle strong { font-weight:200; }
 @media screen and (max-width:1280px){
 	.contTitle .subTitle { font-size:50px; }

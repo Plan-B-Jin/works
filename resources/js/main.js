@@ -124,61 +124,7 @@ $(window).on('load', function() {
 });
 
 $(window).on('load', function (){
-	var owl = $('#owlBannerSet4');
-	owl.owlCarousel({
-    margin:35,
-    loop:true,
-    dots:false,
-   	//autoWidth:true,
-    items:3,
-		responsive:{
-			0:{
-				margin:15,
-				items:1,
-    		dots:true,
-			},
-			640:{
-				margin:20,
-				items:2,
-    		dots:true,
-			},
-			759:{
-    		dots:false
-			},
-			960:{
-				margin:20,
-				items:2,
-    		dots:false
-			},
-			1400:{
-				margin:35,
-				items:3,
-    		dots:false
-			}
-		},
-	})
 	
-	owl.on('mousewheel', '.owl-stage', function (e) {
-    if (e.deltaY<0) {
-        owl.trigger('next.owl');
-    } else {
-        owl.trigger('prev.owl');
-    }
-    e.preventDefault();
-	});
-	
-	$('.brand-button-prev').on('click',function(){
-		owl.trigger('prev.owl');
-	})
-	$('.brand-button-next').on('click',function(){
-		owl.trigger('next.owl');
-	})
-	$('.btn_play').on('click',function(){
-		owl.trigger('play.owl.autoplay',[1000])
-	})
-	$('.btn_stop').on('click',function(){
-		owl.trigger('stop.owl.autoplay')
-	})
 });
 
 
