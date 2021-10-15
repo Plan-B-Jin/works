@@ -146,173 +146,205 @@
 
     <div id="container" class="subpg">
         <!-- subVisual -->
-        <div id="depthNav" class="subVisual subv2">
+        <div id="depthNav" class="subVisual subv6">
             <div class="contTitle">
-                <div class="subTitle"><strong>STUDIO</strong></div>
+                <div class="subTitle"><strong>COMMUNITY</strong></div>
                 <ul class="location-bar">
                     <li class="icon-home">Home</li>
-                    <li>Sudio</li>
-                    <li>스튜디오 A</li>
+                    <li>Community</li>
+                    <li>공지사항</li>
                 </ul>
             </div>
             <div class="sub-menu-tabbox">
-                <button type="button" class="active" onclick="">시설개요</button>
-                <button type="button" class="" onclick="">스튜디오 A</button>
-                <button type="button" class="" onclick="">스튜디오 B</button>
-                <button type="button" class="" onclick="">부대시설 1층</button>
-                <button type="button" class="" onclick="">부대시설 2층</button>
+                <button type="button" class="active" onclick="goLinkPage('Users/beong/works/src/coulourBay/coulour1.html');">공지사항</button>
+                <button type="button" onclick="">자유게시판</button>
             </div>
         </div>
         <!-- /subVisual -->
     <!-- ####################################################### : SUB CONTENT -->
-        <div class="subpg-wrap studio-pg2">
-            <h2 class="pg-tit">스튜디오 A</h2>
-            <div class="sub-cont">
-                <div class="sub-vsbox">
-                    <div class="vsbox-tit box-right img-type">
-                       <!-- <img src="../../resources/images/sub/studio/studio-top-tit@2x.png"> -->
+        <div class="subpg-wrap community1 bbs">
+            <h2 class="pg-tit">공지사항</h2>
+            <div class="bbs bbs-list">
+                
+
+
+
+
+                <div class="bbs_search_bar grid-13">
+					<dl class="clearfix">
+						<dd class="bbs-total">전체 <strong>575</strong>건</dd>
+                        <dd>현재 페이지 <strong><span>1</span>/64</strong></dd>
+						<dd>
+							<select id="srchType" name="srchType" class="search-select bbs" title="검색구분 선택"><option value="">제목 + 내용</option><option value="01">제목</option><option value="02">내용</option></select>
+                            <input type="text" id="srchTxt" name="srchTxt" value="" class="search_text" style="width:200px;" placeholder="검색어를 입력해주세요." title="검색어 입력">
+                            <button type="button" class="bbs-search-btn">검색</button>
+						</dd>
+					</dl>
+				</div>
+
+                <div class="tbl_comm fst tbl_chart grid-13">
+                    <table class="tbl tbl_type2">
+                        <caption class="caption_hide">공지사항</caption>
+                        <colgroup>
+                            <col style="width:10%">
+                            <col style="width:45%">
+                            <col style="width:10%">
+                            <col style="width:10%">
+                            <col style="width:5%">
+                            <col style="width:10%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">번호</th>
+                                <th scope="col">제목</th>
+                                <th scope="col">작성자</th>
+                                <th scope="col">작성일</th>
+                                <th scope="col" style="text-indent: -25%;">첨부파일</th>
+                                <th scope="col">조회수</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="fixed">
+                                <td class="ta_small">
+                                    <div class="inner_cell num-txt">공지</div>
+                                </td>
+                                <td class="ta_left">
+                                    <div class="inner_cell">
+                                        <a href="./community1View.html" target="_blank" class="link_txt bbs-tit">DIGITALBAY-NOTICE10</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inner_cell">관리자</div>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">2021-10-01</div>
+                                </td>
+                                <td class="ta_small">
+                                    <a class="icon-attached"></a>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">811</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ta_small">
+                                    <div class="inner_cell" class="num-txt">1975</div>
+                                </td>
+                                <td class="ta_left">
+                                    <div class="inner_cell">
+                                        <a href="./community1View.html" target="_blank" class="link_txt bbs-tit">DIGITALBAY-NOTICE10</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inner_cell">관리자</div>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">2021-10-01</div>
+                                </td>
+                                <td class="ta_small">
+                                    <a class="icon-attached"></a>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">811</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ta_small">
+                                    <div class="inner_cell" class="num-txt">1975</div>
+                                </td>
+                                <td class="ta_left">
+                                    <div class="inner_cell">
+                                        <a href="./community1View.html" target="_blank" class="link_txt bbs-tit">DIGITALBAY-NOTICE10</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inner_cell">관리자</div>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">2021-10-01</div>
+                                </td>
+                                <td class="ta_small">
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">811</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ta_small">
+                                    <div class="inner_cell" class="num-txt">1975</div>
+                                </td>
+                                <td class="ta_left">
+                                    <div class="inner_cell">
+                                        <a href="./community1View.html" target="_blank" class="link_txt bbs-tit">DIGITALBAY-NOTICE10</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inner_cell">관리자</div>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">2021-10-01</div>
+                                </td>
+                                <td class="ta_small">
+                                    <a class="icon-attached"></a>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">811</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="ta_small">
+                                    <div class="inner_cell" class="num-txt">1975</div>
+                                </td>
+                                <td class="ta_left">
+                                    <div class="inner_cell">
+                                        <a href="./community1View.html" target="_blank" class="link_txt bbs-tit">DIGITALBAY-NOTICE10 DIGITALBAY-NOTICE10 DIGITALBAY-NOTICE10 DIGITALBAY-NOTICE10 DIGITALBAY-NOTICE10</a>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="inner_cell">관리자</div>
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">2021-10-01</div>
+                                </td>
+                                <td class="ta_small">
+                                </td>
+                                <td class="ta_small">
+                                    <div class="inner_cell">811</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="paging_comm">
+                        <span class="inner_paging">
+                            <a href="javascript:;" class="btn_paging btn_fst">
+                                <span class="ico_corp">맨 처음 페이지로 이동</span>
+                            </a>
+                            <a href="javascript:;" class="btn_paging btn_prev">
+                                <span class="ico_corp">이전 페이지로 이동</span>
+                            </a>
+                            <span class="screen_out">현재페이지</span>
+                            <em class="link_page">1</em>
+                            <a href="javascript:moveByPageNum('2', '1');" title="2페이지로 이동 링크" class="link_page">2</a>
+                            <a href="javascript:moveByPageNum('3', '1');" title="3페이지로 이동 링크" class="link_page">3</a>
+                            <a href="javascript:moveByPageNum('4', '1');" title="4페이지로 이동 링크" class="link_page">4</a>
+                            <a href="javascript:moveByPageNum('5', '1');" title="5페이지로 이동 링크" class="link_page">5</a>
+                            <a class="btn_paging btn_next">
+                                <i class="fa fa-angle-right">
+                                    <span class="screen_out">다음 페이지로 이동</span>
+                                </i>
+                            </a>
+                            <a href="javascript:moveByPageNum('8', '1');" class="btn_paging btn_lst">
+                                <span class="ico_corp">맨 끝 페이지로 이동 3</span>
+                            </a>
+                        </span>
                     </div>
-                    <div class="vsbox-txt bg-gray-f5">
-                        <ul>
-                            <li>
-                                <strong>규모</strong>
-                                <span>837㎡ / 250평(27m X 31m X 7.3m)</span>
-                            </li>
-                            <li>
-                                <strong>전기용향</strong>
-                                <span>220V /350kw</span>
-                            </li>
-                            <li>
-                                <strong>전기료</strong>
-                                <span>142원 / 1kwh(냉난방 전기효 포함)</span>
-                            </li>
-                            <li>
-                                <strong>매트</strong>
-                                <span>21.8m X 10.1m X 7.3m</span>
-                            </li>
-                            <li>
-                                <strong>내부시설</strong>
-                                <span>전동식 세트바튼, 자체 냉난방 운영, 급・배기 시설</span>
-                            </li>
-                            <li>
-                                <strong>보조자재</strong>
-                                <span>덧마루, 조명발판, 고임목, 리프트</span>
-                            </li>
-                            <li>
-                                <strong>대여료</strong>
-                                <span class="point-color">30만원 / 1일(부가세별도)</span>
-                            </li>
-                        </ul>
 
-                    </div>
-                </div>
-                <div class="grid-13">
-                    <h3 class="sect-tit">SrudioA 평면도</h3>
-                </div>
-                <div class="floorplan-box bg-gray">
-                    <div class="vsbox-img">
-                        <img src="../../resources/images/sub/studio/2/studio-floorplan@2x.png" />
-                    </div>
+
                 </div>
 
-                <div class="grid-13">
-                    <h3 class="sect-tit">SrudioA 내부주요시설</h3>
-                </div>
-                <div class="info-box">
-                    <dl>
-                        <dd>
-                            <ul>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img1.png" />
-                                    <div class="dashed-box">
-                                        <strong>호리존트</strong>
-                                        <span>
-                                            가로 : 21.8m, 세로 : 10.1m
-                                            <br/>높이 : 7.3m
-                                            <br/>특수촬영 및 배경막 등으로 사용 가능
-                                            <br/>채색 및 색상변경 가능
-                                        </span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img2.png" />
-                                    <div class="dashed-box">
-                                        <strong>전동식 세트바튼</strong>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img3.png" />
-                                    <div class="dashed-box">
-                                        <strong>캐트워크</strong>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img4.png" />
-                                    <div class="dashed-box">
-                                        <strong>세트고정용 브라켓</strong>
-                                    </div>
-                                </li>
 
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img5.png" />
-                                    <div class="dashed-box">
-                                        <strong>세트고정용 브라켓</strong>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img6.png" />
-                                    <div class="dashed-box">
-                                        <strong>출입문</strong>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img7.png" />
-                                    <div class="dashed-box">
-                                        <strong>전원</strong>
-                                        <span>
-                                            최대사용가능전력 : 350kw(380V / 3상 4선),
-                                            <br/>20kw(110 / 단상)
-                                            <br/>조명 및 기타 기기의 전력공급용
-                                        </span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img8.png" />
-                                    <div class="dashed-box">
-                                        <strong>전원</strong>
-                                        <span>
-                                            조명용 플러그 :
-                                            <br/>18개소(220V / 30A 60A, 110V / 30A)
-                                        </span>
-                                    </div>
-                                </li>
 
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img9.png" />
-                                    <div class="dashed-box">
-                                        <strong>발전차 전선유입구</strong>
-                                        <span>
-                                            직경 : 250mm
-                                            <br/>발전기전력 내부공급을 위한 케이블 안입구
-                                            <br/>상・하수도 및 소방호스 유입구로 사용이 가능
-                                        </span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <img src="../../resources/images/sub/studio/2/studio2-img10.png" />
-                                    <div class="dashed-box">
-                                         <strong>냉난방기</strong>
-                                        <span>
-                                            설치대수 : 3대
-                                            <br/>스튜디오내에서 가동 및 정지가 가능한
-                                            <br/>멀티 냉난방기
-                                        </span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </dd>
-                    </dl>
-                </div>
+
             </div>
         </div>
     <!-- ####################################################### : /SUB CONTENT -->
