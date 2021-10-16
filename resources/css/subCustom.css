@@ -168,6 +168,10 @@ ul.floorplan-info-list > li { width: 25%; }
 .icon-attached { position: relative; line-height: 36px; display: inline-block; cursor: pointer; } 
 .icon-attached::before { content: ""; display: inline-flex; width: 20px; height: 20px; background-image: url(../images/sub/icon/682-2@2x.png); background-position: center; background-repeat: no-repeat; background-size: 16px; vertical-align: text-top; } 
 .bbs_text_type_view .icon-attached::before {background-image: url(../images/sub/icon/l-1-5@2x.png);height: 22px;background-size: 14px;vertical-align: middle;} 
+.attached-box>span {
+    display: inline-block;
+    line-height: 36px;
+}
 
 /* paging */
 .paging_comm { overflow:hidden; position:relative; width:100%; padding-top: 40px; text-align:center; } 
