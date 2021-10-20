@@ -37,10 +37,13 @@ function displayMap(locationCd, posX, posY, fairName) {
 var icoordx = '35.16107286231004';
 var icoordy = '129.14055569820204';
 $(document).ready(function () {
-	displayMap('kakaoMapArea', 35.16107286231004,129.14055569820204, '');
+//지도
+/*	displayMap('kakaoMapArea', 35.16107286231004,129.14055569820204, '');*/
+
 });
 
 $(window).on('load', function (){
+
 	var owl4 = $('#owlBannerSet4');
 	var prev4 = $('.main4 .brand-button-prev');
 	var next4 = $('.main4 .brand-button-next');
@@ -100,6 +103,7 @@ $(window).on('load', function (){
 	});
 
 
+
 	var owl5 = $('#owlBannerFoot');
 	var prev5 = $('.main5 .brand-button-prev');
 	var next5 = $('.main5 .brand-button-next');
@@ -118,11 +122,10 @@ $(window).on('load', function (){
 			margin:10,
 			items:2,
 		},
-		759:{
-		},
-		960:{
-			margin:10,
-			items:2,
+		
+		1024:{
+			margin:25,
+			items:4,
 		},
 		1400:{
 			margin:25,
@@ -138,5 +141,14 @@ $(window).on('load', function (){
 	});
 
 	
+	moveToPosition();
 });
 
+$(window).resize(function() {
+	moveToPosition();
+});
+// moveTo.top
+function moveToPosition(){
+	var footbox_h = $('#section5').height() - 35;
+	$('#moveTo').css('bottom', footbox_h+'px');
+}
